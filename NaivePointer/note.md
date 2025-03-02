@@ -1,3 +1,4 @@
+# 智能指针
 智能指针是C++标准库提供的一种机制，用于防止内存泄漏，及时回收不再需要的内存。
 
 当我们使用普通的指针变量时，一旦程序变得冗长复杂，难免会出现忘记释放内存的情况，导致可用的内存变少。
@@ -16,16 +17,18 @@
  int* ref_cnt;
 ```
 
-Node 类型的指针变量 pointer。
-一个指向整型变量的指针 ref_cnt，它指向的值 *ref_cnt 表示当前拥有 pointer 所指向的 Node 对象地址的SmartPointer 对象数。
+- Node 类型的指针变量 pointer。
+- 一个指向整型变量的指针 ref_cnt，它指向的值 *ref_cnt 表示当前拥有 pointer 所指向的 Node 对象地址的SmartPointer 对象数。
+
 该指针类有三个需要你完成的成员函数：
 
-拷贝构造函数，使用一个 SmartPointer 对象来初始化本对象。
-assign函数，该函数接收一个 SmartPointer 对象sptr，并将本对象的 pointer 指针赋值为 sptr.pointer。
-析构函数，销毁本 SmartPoiner 对象，也就是说，本对象不再持有 pointer 指针指向的Node地址。注意：为通过测试样例，需要保证析构函数可以被重复调用。
+- **拷贝构造函数**:使用一个 SmartPointer 对象来初始化本对象。
+- **assign函数**:该函数接收一个 SmartPointer 对象sptr，并将本对象的 pointer 指针赋值为 sptr.pointer。
+- **析构函数**:销毁本 SmartPoiner 对象，也就是说，本对象不再持有 pointer 指针指向的Node地址。注意：为通过测试样例，需要保证析构函数可以被重复调用。
+
 你需要在实现的过程中，维护两个成员变量的值，你可能需要思考在上述操作中，ref_cnt 应该如何赋值和改变，使得对于任何 Node 对象，如果没有 SmartPointer 对象持有其地址，则其持有的空间被释放(即在 *ref_cnt 为0的时候释放 pointer 指向的 Node 对象)。
 
-输出
+## 输出
 测评文件将会根据 Node 类对象析构输出对应的id的顺序来判断程序是否正确，所以请尽量不要修改头文件内容。
 
 ```c
